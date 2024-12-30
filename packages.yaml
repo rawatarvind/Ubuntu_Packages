@@ -4,9 +4,10 @@
   become: yes
   tasks:
     - name: Copy package files to target server
-      community.general.copy:
+      ansible.builtin.copy:
         src: /home/sarvind/ansible/Ubuntu_packages/
         dest: /tmp/Ubuntu_packages/
+        recurse: yes  # Make sure subdirectories and files are copied
 
     - name: Make the script executable
       ansible.builtin.file:
@@ -18,3 +19,4 @@
         ./ubuntu.sh
       args:
         chdir: /tmp/Ubuntu_packages
+
