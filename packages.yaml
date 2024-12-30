@@ -4,7 +4,7 @@
   become: yes
   tasks:
     - name: Copy package files to target server
-      ansible.builtin.rsync:
+      community.general.rsync:
         src: /home/sarvind/ansible/Ubuntu_packages/
         dest: /tmp/Ubuntu_packages/
         archive: true
