@@ -1,0 +1,17 @@
+---
+- name: Install Ubuntu packages
+  hosts: target_servers
+  become: yes
+  tasks:
+    - name: Copy package files to target server
+      ansible.builtin.copy:
+        src: /path/to/Ubuntu_packages/
+        dest: /tmp/Ubuntu_packages/
+        mode: 0755
+
+    - name: Run ubuntu.sh script
+      ansible.builtin.shell: |
+        cd /tmp/Ubuntu_packages
+        ./ubuntu.sh
+      args:
+        chdir: /tmp/Ubuntu_packages
