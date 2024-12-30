@@ -5,7 +5,7 @@
   tasks:
     - name: Copy package files to target server
       ansible.builtin.copy:
-        src: /home/sarvind/ansible/Ubuntu_packages
+        src: /home/sarvind/ansible/Ubuntu_packages/
         dest: /tmp/Ubuntu_packages/
         mode: 0755
 
