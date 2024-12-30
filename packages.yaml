@@ -4,10 +4,12 @@
   become: yes
   tasks:
     - name: Copy package files to target server
-      ansible.builtin.copy:
+      ansible.builtin.rsync:
         src: /home/sarvind/ansible/Ubuntu_packages/
         dest: /tmp/Ubuntu_packages/
-        mode: 0755
+        archive: true
+        compress: true
+        delete: false
 
     - name: Run ubuntu.sh script
       ansible.builtin.shell: |
