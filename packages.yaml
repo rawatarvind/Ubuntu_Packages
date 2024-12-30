@@ -1,11 +1,11 @@
 ---
 - name: Install Ubuntu packages
-  hosts: target_servers
+  hosts: ubuntu_user
   become: yes
   tasks:
     - name: Copy package files to target server
       ansible.builtin.copy:
-        src: /path/to/Ubuntu_packages/
+        src: /home/sarvind/ansible/Ubuntu_packages
         dest: /tmp/Ubuntu_packages/
         mode: 0755
 
