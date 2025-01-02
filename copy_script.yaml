@@ -5,7 +5,7 @@
   tasks:
     - name: update ubutu
       ansible.builtin.apt:
-      update_cache: yes
+          update_cache: yes
     - name: Copy package files to target server
       ansible.builtin.copy:
         src: /home/sarvind/git/basic_bash/myscript.sh
