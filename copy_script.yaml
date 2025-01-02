@@ -3,7 +3,7 @@
   hosts: ubuntu_user
   become: yes
   tasks:
-    - nmae: update ubutu
+    - name: update ubutu
       ansible.builtin.apt:
       update_cache: yes
     - name: Copy package files to target server
