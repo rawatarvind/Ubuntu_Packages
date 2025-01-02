@@ -3,6 +3,9 @@
   hosts: ubuntu_user
   become: yes
   tasks:
+    - nmae: update ubutu
+      ansible.builtin.apt:
+      update_cache: yes
     - name: Copy package files to target server
       ansible.builtin.copy:
         src: /home/sarvind/ansible/Ubuntu_packages/
