@@ -1,0 +1,18 @@
+---
+- name: Install Ubuntu packages
+  hosts: ubuntu_user
+  become: yes
+  tasks:
+    - nmae: update ubutu
+      ansible.builtin.apt:
+      update_cache: yes
+    - name: Copy package files to target server
+      ansible.builtin.copy:
+        src: /home/sarvind/git/basic_bash/myscript.sh
+        dest: /tmp/Ubuntu_packages/
+        recurse: yes  # Make sure subdirectories and files are copied
+
+    - name: Make the script executable
+      ansible.builtin.file:
+        path: /tmp/Ubuntu_packages/myscript.sh
+        mode: '0755'
