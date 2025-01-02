@@ -22,4 +22,14 @@
         ./ubuntu.sh
       args:
         chdir: /tmp/Ubuntu_packages
+    - name: Copy Script files to target server
+      ansible.builtin.copy:
+        src: /home/sarvind/git/basic_bash/myscript.sh
+        dest: /tmp/Ubuntu_packages/
+        recurse: yes  # Make sure subdirectories and files are copied
+
+    - name: Make the script executable
+      ansible.builtin.file:
+        path: /tmp/Ubuntu_packages/myscript.sh
+        mode: '0755'
 
