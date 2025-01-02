@@ -3,16 +3,18 @@
   hosts: ubuntu_user
   become: yes
   tasks:
-    - name: update ubutu
+    - name: Update Ubuntu package cache
       ansible.builtin.apt:
-         update_cache: yes
-    - name: Copy package files to target server
+        update_cache: yes
+
+    - name: Copy Ubuntu packages to target server
       ansible.builtin.copy:
         src: /home/sarvind/ansible/Ubuntu_packages/
         dest: /tmp/Ubuntu_packages/
-        recurse: yes  # Make sure subdirectories and files are copied
+        remote_src: no
+        mode: '0755'
 
-    - name: Make the script executable
+    - name: Make ubuntu.sh script executable
       ansible.builtin.file:
         path: /tmp/Ubuntu_packages/ubuntu.sh
         mode: '0755'
@@ -22,14 +24,10 @@
         ./ubuntu.sh
       args:
         chdir: /tmp/Ubuntu_packages
-    - name: Copy Script files to target server
+
+    - name: Copy additional script to target server
       ansible.builtin.copy:
         src: /home/sarvind/git/basic_bash/myscript.sh
-        dest: /tmp/Ubuntu_packages/
-        recurse: yes  # Make sure subdirectories and files are copied
-
-    - name: Make the script executable
-      ansible.builtin.file:
-        path: /tmp/Ubuntu_packages/myscript.sh
+        dest: /tmp/Ubuntu_packages/myscript.sh
+        remote_src: no
         mode: '0755'
-
